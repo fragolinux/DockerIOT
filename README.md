@@ -1,6 +1,6 @@
 ## Welcome to DockerIOT
 
-Inspired by the work of Peter Scargill ("[The Script](https://www.esp-go.com)") about an automatic installer of everything you need to start a platform useful to manage IOT devices, I'd like to convert that to a Docker container based setup, keeping all the easy install features you already are used to.
+Inspired by the excellent work of Peter Scargill ("[The Script](https://www.esp-go.com)") about an automatic installer of everything you need to start a platform useful to manage IOT devices, I'd like to convert that to a Docker container based setup, keeping all the easy install features you already are used to.
 
 ### Goals
 
