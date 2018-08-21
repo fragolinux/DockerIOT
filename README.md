@@ -6,11 +6,12 @@ Inspired by the excellent work of Peter Scargill ("[The Script](https://www.esp-
 
 ### Goals
 
-- **easy install**: just run a script to select what you want to install, choose your credentials, let it run
-- **easy backup**: all user data will be in a single folder, which can be ported on an other device with Docker support and reinstalled in as low downtime as possible, or backupped via RSYNC or other methods via network or attached storage
+- **easy install**: just run a script to select what you want to install, choose your credentials, let it run.
+- **easy backup**: all user data will be in a single folder, which can be ported on an other device with Docker support and reinstalled in as low downtime as possible, or backupped via RSYNC or other methods via network or attached storage.
 - **easy management**: thanks to scripts with a coherent user interface and to a user friendly web GUI ([Portainer](https://portainer.io))
-- **easy update**: being based on Docker, you just need to drop your actual container, pull down an updated image, deploy a new container from that, start it again, finding all you previous data and configs just there, ready to work
-- **multi platform**: testing started on X86 hardware (a [CoreOS](https://coreos.com) virtual machine, really), but of course on small SBCs like Raspberry Pi, Orange Pi, FriendlyArm NanoPi, Pine64 Rock64, and the like, on whatever platform a Docker daemon is available. In the future I'd like to migrate to [Balena.io](https://www.balena.io) for its smaller footprint
+- **easy update**: being based on Docker, you just need to drop your actual container, pull down an updated image, deploy a new container from that, start it again, finding all you previous data and configs just there, ready to work.
+- **multi platform**: testing started on X86 hardware (a [CoreOS](https://coreos.com) virtual machine, really), but of course on small SBCs like Raspberry Pi, Orange Pi, FriendlyArm NanoPi, Pine64 Rock64, and the like, on whatever platform a Docker daemon is available. In the future I'd like to migrate to [Balena.io](https://www.balena.io) for its smaller footprint.
+- **reuse of existing containers**: I don't want to reinvent the wheel, and I'll use standard, possibly official, containers whenever it's possible, and I'd like to use [Alpine Linux](https://hub.docker.com/_/alpine) Docker images if available, to reduce even more container size.
 
 ### What you'll get
 
