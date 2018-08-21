@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  hassconfigurator:
+    container_name: hassconfigurator
+    image: causticlab/hass-configurator-docker:x86_64-0.3.1
+    volumes:
+      - ./data:/config
+      - ../homeassistant/data/:/hass-config
+    restart: always
+    ports:
+      - 3218:3218/tcp
+    network_mode: bridge
+
