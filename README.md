@@ -1,37 +1,22 @@
-## Welcome to GitHub Pages
+## Welcome to DockerIOT
 
-You can use the [editor on GitHub](https://github.com/fragolinux/DockerIOT/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Inspired by the work of Peter Scargill ("[The Script](https://www.esp-go.com)") about an automatic installer of everything you need to start a platform useful to manage IOT devices, I'd like to convert that to a Docker container based setup, keeping all the easy install features you already are used to.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Goals
 
-### Markdown
+- **easy install**: just run a script to select what you want to install, choose your credentials, let it run
+- **easy backup**: all user data will be in a single folder, which can be ported on an other device with Docker support and reinstalled in as low downtime as possible, or backupped via RSYNC or other methods via network or attached storage
+- **easy management**: thanks to scripts with a coherent user interface and to a user friendly web GUI ([Portainer](https://portainer.io))
+- **easy update**: being based on Docker, you just need to drop your actual container, pull down an updated image, deploy a new container from that, start it again, finding all you previous data and configs just there, ready to work
+- **multi platform**: testing started on X86 hardware (a [CoreOS](https://coreos.com) virtual machine, really), but of course on small SBCs like Raspberry Pi, Orange Pi, FriendlyArm NanoPi, Pine64 Rock64, and the like, on whatever platform a Docker daemon is available. In the future I'd like to migrate to [Balena.io](https://www.balena.io) for its smaller footprint
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### What you'll get
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/fragolinux/DockerIOT/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+- [Node-RED](https://nodered.org) | Flow-based programming for the Internet of Things
+- [Mosquitto](https://mosquitto.org) | An open source MQTT broker
+- [Home Assistant](https://www.home-assistant.io) | Open source home automation that puts local control and privacy first
+- [Portainer](https://portainer.io) | Simple management UI for Docker
+- [SQLite](https://www.sqlite.org) | Self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine, together with [phpLiteAdmin](https://www.phpliteadmin.org) (a web-based SQLite database admin tool written in PHP with support for SQLite3 and SQLite2) running on top of [Caddy](https://caddyserver.com) (a light HTTP/2 Web Server with Automatic HTTPS)
+- [Grafana](https://grafana.com) - The open platform for analytics and monitoring
+- [InfluxDB](https://www.influxdata.com) | Time Series Database Monitoring & Analytics, together with [Kapacitor](https://www.influxdata.com/time-series-platform/kapacitor) (Real-Time Stream Processing Engine), [Chronograf](https://www.influxdata.com/time-series-platform/chronograf) (Complete Interface for the InfluxData Platform) and [Telegraf](https://www.influxdata.com/time-series-platform/telegraf) (Agent for Collecting & Reporting Metrics & Data)
+- More to come...
