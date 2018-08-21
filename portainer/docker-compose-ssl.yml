@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  portainer:
+    container_name: portainer
+    image: portainer/portainer
+    command: -H unix:///var/run/docker.sock --ssl
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./data:/data
+      - ./certs:/certs
+    restart: always
+    ports:
+      - "443:9000"
+    network_mode: bridge
+

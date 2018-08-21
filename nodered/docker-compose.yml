@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  nodered:
+    container_name: nodered
+    image: nodered/node-red-docker:slim-v8
+    volumes:
+      - ./data:/data
+    restart: always
+    ports:
+      - "1880:1880"
+    network_mode: bridge
+

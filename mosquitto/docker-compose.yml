@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  mosquitto:
+    container_name: mosquitto
+    build: .
+    image: mosquitto:mine
+    volumes:
+      - ./data:/mosquitto/data
+      - ./data:/mosquitto/log
+    restart: always
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    network_mode: bridge
+
