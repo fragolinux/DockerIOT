@@ -17,6 +17,6 @@ Inspired by the work of Peter Scargill ("[The Script](https://www.esp-go.com)") 
 - [Home Assistant](https://www.home-assistant.io) | Open source home automation that puts local control and privacy first
 - [Portainer](https://portainer.io) | Simple management UI for Docker
 - [SQLite](https://www.sqlite.org) | Self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine, together with [phpLiteAdmin](https://www.phpliteadmin.org) (a web-based SQLite database admin tool written in PHP with support for SQLite3 and SQLite2) running on top of [Caddy](https://caddyserver.com) (a light HTTP/2 Web Server with Automatic HTTPS)
-- [Grafana](https://grafana.com) - The open platform for analytics and monitoring
+- [Grafana](https://grafana.com) | The open platform for analytics and monitoring
 - [InfluxDB](https://www.influxdata.com) | Time Series Database Monitoring & Analytics, together with [Kapacitor](https://www.influxdata.com/time-series-platform/kapacitor) (Real-Time Stream Processing Engine), [Chronograf](https://www.influxdata.com/time-series-platform/chronograf) (Complete Interface for the InfluxData Platform) and [Telegraf](https://www.influxdata.com/time-series-platform/telegraf) (Agent for Collecting & Reporting Metrics & Data)
 - More to come...
