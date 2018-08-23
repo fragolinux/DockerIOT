@@ -3,7 +3,8 @@ version: '3'
 services:
   nodered:
     container_name: nodered
-    image: nodered/node-red-docker:slim-v8
+    build: .
+    image: nodered/mine:slim-v8
     volumes:
       - ./data:/data
     restart: always
