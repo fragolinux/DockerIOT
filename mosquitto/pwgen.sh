@@ -5,4 +5,6 @@ if [[ $# -eq 0 ]] ; then
 fi
 cp entrypoint.stock.sh entrypoint.sh
 sed -i -e "s#Passw0rd#$1#" entrypoint.sh
+echo -n -e "PUID=`id -u`\nPGID=`id -g`\n" > .env
+#echo -n "PGID=`id -g`" >> .env
 

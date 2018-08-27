@@ -3,12 +3,17 @@ version: '3'
 services:
   mosquitto:
     container_name: mosquitto
-    build: .
+    build:
+      context: .
+      args:
+        PUID: $PUID
+        PGID: $PGID
     image: mosquitto:mine
     volumes:
       - ./data:/mosquitto/data
       - ./data:/mosquitto/log
     restart: always
+    user: $PUID
     ports:
       - "1883:1883"
       - "9001:9001"
