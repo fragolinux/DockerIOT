@@ -5,5 +5,6 @@ if [[ $# -eq 0 ]] ; then
 fi
 
 echo -n "PASSWORD=" > .env
-docker run --rm httpd:2.4-alpine htpasswd -nbB admin $1 | cut -d ":" -f 2 >> .env
+docker build -t htpasswd:mine .
+docker run --rm -ti htpasswd:mine admin $1 | cut -d ":" -f 2 >> .env
 
