@@ -60,6 +60,9 @@
         "node-red-dashboard": "*",
         "node-red-node-darksky": "*",
         "node-red-contrib-owntracks": "*",
+        "node-red-node-serialport": "*",
+        "serialport": "*",
+        "i2c-bus": "*",
         "node-red-contrib-alexa-local": "*"		
     },
     "engines": {
