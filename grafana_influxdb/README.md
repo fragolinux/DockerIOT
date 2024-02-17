@@ -12,11 +12,11 @@ on 1st run, use this different startup line:
 
 then monitor with
 
-    docker-compose logs -f
+    docker-compose -f init-docker-compose.yml logs -f
 
 to see when everything is complete (logs are still, not going on), then shutdown with
 
-    docker-compose down
+    docker-compose -f init-docker-compose.yml down
 
 from now on, use normal startup as below:
 
