@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  mosquitto:
+    image: eclipse-mosquitto
+    container_name: mosquitto
+    restart: unless-stopped
+    volumes:
+      - ./data/config:/mosquitto/config
+      - ./data/data:/mosquitto/data
+      - ./data/log:/mosquitto/log
+    ports:
+      - 1883:1883
+      - 9001:9001
