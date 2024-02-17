@@ -1,0 +1,33 @@
+version: '2'
+services:
+  influxdb:
+    image: influxdb:latest
+    ports:
+      - ${DOCKER_INFLUXDB_INIT_PORT}:8086
+    volumes:
+      - ./data/influxdb2/data:/var/lib/influxdb2
+      - ./data/influxdb2/config:/etc/influxdb2
+      - ./data/influxdb2/backup:/var/lib/backup
+    environment:
+      - TZ=${TZ}
+      - INFLUXDB_DB=${DOCKER_INFLUXDB_INIT_BUCKET}
+      - INFLUXDB_ADMIN_USER=${DOCKER_INFLUXDB_INIT_USERNAME}
+      - INFLUXDB_ADMIN_PASSWORD=${DOCKER_INFLUXDB_INIT_PASSWORD}
+    restart: unless-stopped
+    env_file:
+      - .env
+
+  grafana:
+    image: grafana/grafana:latest
+    user: root
+    ports:
+      - ${GRAFANA_PORT}:3000
+    volumes:
+      - ./data/grafana:/var/lib/grafana
+      - ./data/provisioning/:/etc/grafana/provisioning
+    depends_on:
+      - influxdb
+    environment:
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_USERNAME}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD}
+    restart: unless-stopped
