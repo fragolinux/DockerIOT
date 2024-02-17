@@ -18,7 +18,7 @@ to see when everything is complete (logs are still, not going on), then shutdown
 
     docker-compose -f init-docker-compose.yml down
 
-from now on, use normal startup as below:
+## from now on, use normal startup as below:
 
 startup:
 
