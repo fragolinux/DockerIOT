@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+  nodered:
+    container_name: nodered
+    image: nodered/node-red
+    volumes:
+    - ./data:/data
+    ports:
+    - 1880:1880
+    restart: unless-stopped
+    environment:
+      - TZ=${TZ}
+    env_file:
+      - .env
