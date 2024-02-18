@@ -24,18 +24,3 @@ services:
     env_file:
       - .env
     entrypoint: ["./entrypoint.sh"]
-
-  grafana:
-    image: grafana/grafana:latest
-    user: root
-    ports:
-      - ${GRAFANA_PORT}:3000
-    volumes:
-      - ./data/grafana:/var/lib/grafana
-      - ./data/provisioning/:/etc/grafana/provisioning
-    depends_on:
-      - influxdb
-    environment:
-      - GF_SECURITY_ADMIN_USER=${GRAFANA_USERNAME}
-      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD}
-    restart: unless-stopped
