@@ -1,0 +1,17 @@
+version: '3'
+services:
+  homarr:
+    container_name: homarr
+    image: ghcr.io/ajnart/homarr:latest
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock # Optional, only if you want docker integration
+      - ./data/configs:/app/data/configs
+      - ./data/icons:/app/public/icons
+      - ./data/data:/data
+    ports:
+      - '7575:7575'
+    environment:
+      - TZ=${TZ}
+    env_file:
+      - .env

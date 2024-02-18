@@ -17,6 +17,7 @@ Inspired by the excellent work of Peter Scargill ("[The Script](https://www.esp-
 
 - [Node-RED](https://nodered.org) | Flow-based programming for the Internet of Things
 - [Mosquitto](https://mosquitto.org) | An open source MQTT broker
+- [Homarr](https://homarr.dev/) | A service dashboard
 - [Home Assistant](https://www.home-assistant.io) | Open source home automation that puts local control and privacy first, with integrated [HASS Configurator](https://www.home-assistant.io/addons/configurator)
 - [Portainer](https://portainer.io) | Simple management UI for Docker
 - [SQLite](https://www.sqlite.org) | Self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine, together with [phpLiteAdmin](https://www.phpliteadmin.org) (a web-based SQLite database admin tool written in PHP with support for SQLite3 and SQLite2) running on top of [Caddy](https://caddyserver.com) (a light HTTP/2 Web Server with Automatic HTTPS)
