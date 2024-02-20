@@ -24,3 +24,11 @@ Inspired by the excellent work of Peter Scargill ("[The Script](https://www.esp-
 - [Grafana](https://grafana.com) | The open platform for analytics and monitoring
 - [InfluxDB](https://www.influxdata.com) | Time Series Database Monitoring & Analytics, together with [Kapacitor](https://www.influxdata.com/time-series-platform/kapacitor) (Real-Time Stream Processing Engine), [Chronograf](https://www.influxdata.com/time-series-platform/chronograf) (Complete Interface for the InfluxData Platform) and [Telegraf](https://www.influxdata.com/time-series-platform/telegraf) (Agent for Collecting & Reporting Metrics & Data)
 - More to come...
+
+
+### install docker compose
+
+    mkdir -p ~/.docker/cli-plugins/
+    curl -SL https://github.com/docker/compose/releases/download/v2.24.6/docker-compose-linux-$(uname -m) -o ~/.docker/cli-plugins/docker-compose
+    chmod +x ~/.docker/cli-plugins/docker-compose
+    docker compose version
