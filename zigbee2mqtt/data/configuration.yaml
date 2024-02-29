@@ -18,3 +18,7 @@ permit_join: true
 serial:
   # Location of CC2531 USB sniffer
   port: /dev/ttyACM0 # DO ***NOT*** TOUCH!
+
+frontend:
+  port: 9099
+  host: 0.0.0.0
