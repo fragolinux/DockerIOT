@@ -32,3 +32,10 @@ Inspired by the excellent work of Peter Scargill ("[The Script](https://www.esp-
     curl -SL https://github.com/docker/compose/releases/download/v2.24.6/docker-compose-linux-$(uname -m) -o ~/.docker/cli-plugins/docker-compose
     chmod +x ~/.docker/cli-plugins/docker-compose
     docker compose version
+
+### useful aliases:
+    alias docker-compose="docker compose"
+    alias dup="docker-compose up -d"
+    alias ddown="docker-compose down"
+    alias dlogs="docker-compose logs -f"
+    alias dupdate="docker-compose down; docker-compose pull; docker-compose up -d --force-recreate"
