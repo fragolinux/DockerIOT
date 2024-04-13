@@ -35,7 +35,8 @@ Inspired by the excellent work of Peter Scargill ("[The Script](https://www.esp-
 
 ### useful aliases:
     alias docker-compose="docker compose"
-    alias dup="docker-compose up -d"
-    alias ddown="docker-compose down"
+    alias dstart="docker-compose up -d"
+    alias dstop="docker-compose down"
+    alias drestart="docker-compose down; docker-compose up -d"
     alias dlogs="docker-compose logs -f"
     alias dupdate="docker-compose down; docker-compose pull; docker-compose up -d --force-recreate"
