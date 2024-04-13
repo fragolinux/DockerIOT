@@ -40,5 +40,5 @@ Inspired by the excellent work of Peter Scargill ("[The Script](https://www.esp-
     alias drestart="docker-compose down; docker-compose up -d"
     alias dlogs="docker-compose logs -f"
     alias dupdate="docker-compose down; docker-compose pull; docker-compose up -d --force-recreate"
-    alias dsh="docker-compose exec $(grep -A1 services docker-compose.yml|tail -1|cut -d: -f1|awk '{$1=$1};1') /bin/sh"
-    alias dbash="docker-compose exec $(grep -A1 services docker-compose.yml|tail -1|cut -d: -f1|awk '{$1=$1};1') /bin/bash"
+    alias dsh="docker-compose exec \$(grep -A1 services docker-compose.yml|tail -1|cut -d: -f1|awk '{$1=$1};1') /bin/sh"
+    alias dbash="docker-compose exec \$(grep -A1 services docker-compose.yml|tail -1|cut -d: -f1|awk '{$1=$1};1') /bin/bash"
