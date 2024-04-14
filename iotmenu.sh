@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+export NCURSES_NO_UTF8_ACS=1
+
 # Function to get service name from a folder
 get_service_name() {
   local folder="$1"
