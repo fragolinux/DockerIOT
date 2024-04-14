@@ -1,4 +1,18 @@
 #!/usr/bin/env bash
+set -euo pipefail
+
+if ! command -v dialog $> /dev/null; then
+  echo \"dialog\" executable missing, please install it... exiting
+  exit 1
+fi
+
+set +e
+docker compose &>/dev/null # sending output to /dev/null because we don't want it printed
+if [ $? -ne 0 ]; then
+  echo Docker \"compose\" plugin missing, please install it... exiting
+  exit 1
+fi
+set -e
 
 export NCURSES_NO_UTF8_ACS=1
 
