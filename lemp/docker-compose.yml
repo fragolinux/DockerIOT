@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  php:
+    build: .
+    volumes:
+      - './data/www:/var/www/html'
+    depends_on:
+      - mariadb
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - 80:80
+    links:
+      - 'php'
+    volumes:
+      - './data/www:/var/www/html'
+      - './data/nginx:/etc/nginx/conf.d'
+    depends_on:
+      - php
+    restart: unless-stopped
+
+  mariadb:
+    image: mariadb:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    env_file:
+      - .env
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    restart: unless-stopped
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    ports:
+      - 8080:80
+    environment:
+      PMA_HOST: mariadb
+    depends_on:
+      - mariadb
+    restart: unless-stopped
