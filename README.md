@@ -18,7 +18,6 @@ Inspired by the excellent work of Peter Scargill ("[The Script](https://www.esp-
 - [Node-RED](https://nodered.org) | Flow-based programming for the Internet of Things
 - [Mosquitto](https://mosquitto.org) | An open source MQTT broker
 - [Homarr](https://homarr.dev/) | A service dashboard
-- [Home Assistant](https://www.home-assistant.io) | Open source home automation that puts local control and privacy first, with integrated [HASS Configurator](https://www.home-assistant.io/addons/configurator)
 - [Portainer](https://portainer.io) | Simple management UI for Docker
 - [SQLite](https://www.sqlite.org) | Self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine, together with [phpLiteAdmin](https://www.phpliteadmin.org) (a web-based SQLite database admin tool written in PHP with support for SQLite3 and SQLite2) running on top of [Caddy](https://caddyserver.com) (a light HTTP/2 Web Server with Automatic HTTPS)
 - [Grafana](https://grafana.com) | The open platform for analytics and monitoring
@@ -29,16 +28,36 @@ Inspired by the excellent work of Peter Scargill ("[The Script](https://www.esp-
 ### install docker compose
 
     mkdir -p ~/.docker/cli-plugins/
-    curl -SL https://github.com/docker/compose/releases/download/v2.24.6/docker-compose-linux-$(uname -m) -o ~/.docker/cli-plugins/docker-compose
+    curl -SL https://github.com/docker/compose/releases/download/v2.26.1/docker-compose-linux-$(uname -m) -o ~/.docker/cli-plugins/docker-compose
     chmod +x ~/.docker/cli-plugins/docker-compose
     docker compose version
 
+### most common docker compose commands
+
+startup:
+
+    docker compose up -d
+
+shutdown:
+
+    docker compose down
+
+logs (following):
+
+    docker compose logs -f
+
+update:
+
+    docker compose down
+    docker compose pull
+    docker compose up -d --force-recreate
+
 ### useful aliases:
     alias docker-compose="docker compose"
-    alias dstart="docker-compose up -d"
-    alias dstop="docker-compose down"
-    alias drestart="docker-compose down; docker-compose up -d"
-    alias dlogs="docker-compose logs -f"
-    alias dupdate="docker-compose down; docker-compose pull; docker-compose up -d --force-recreate"
-    alias dsh="docker-compose exec \$(grep -A1 services docker-compose.yml|tail -1|cut -d: -f1|awk '{\$1=\$1};1') /bin/sh"
-    alias dbash="docker-compose exec \$(grep -A1 services docker-compose.yml|tail -1|cut -d: -f1|awk '{\$1=\$1};1') /bin/bash"
+    alias dstart="docker compose up -d"
+    alias dstop="docker compose down"
+    alias drestart="docker compose down; docker compose up -d"
+    alias dlogs="docker compose logs -f"
+    alias dupdate="docker compose down; docker compose pull; docker compose up -d --force-recreate"
+    alias dsh="docker compose exec \$(grep -A1 services docker compose.yml|tail -1|cut -d: -f1|awk '{\$1=\$1};1') /bin/sh"
+    alias dbash="docker compose exec \$(grep -A1 services docker compose.yml|tail -1|cut -d: -f1|awk '{\$1=\$1};1') /bin/bash"

@@ -26,27 +26,30 @@ get_service_name() {
 get_service_status() {
   local folder="$1"
   local service_name="$2"
-  [[ $(docker compose -f $folder/docker-compose.yml ps --format "{{.State}}" $service_name) = "running" ]] && echo R || echo " "
+  [[ $(docker compose -f "$folder"/docker-compose.yml ps --format "{{.State}}" "$service_name") = "running" ]] && echo R || echo " "
 }
 
 # Function to display service menu and execute action
 perform_service_action() {
   local folder="$1"
   local service_name="$2"
-  service_status=$(docker compose -f $folder/docker-compose.yml ps --format "{{.State}}" $service_name)
+  service_status=$(docker compose -f "$folder"/docker-compose.yml ps --format "{{.State}}" "$service_name")
   # Define service action options as an array
   service_actions=()
-  [ "$service_status" != "running" ] && service_actions+=("start" "Start $service_name container")
-  [ "$service_status" = "running" ] && service_actions+=("stop" "Stop $service_name container")
-  [ "$service_status" = "running" ] && service_actions+=("restart" "Restart $service_name container")
-  [ "$service_status" = "running" ] && service_actions+=("logs" "Show $service_name container logs")
-  service_actions+=("update" "Update $service_name container image")
-  [ "$service_status" = "running" ] && service_actions+=("sh" "Run SH shell in $service_name container")
-  [ "$service_status" = "running" ] && service_actions+=("bash" "Run BASH shell $service_name container")
+  tot_actions=0
+  [ "$service_status" != "running" ] && service_actions+=("start" "Start $service_name container") && ((tot_actions+=1))
+  [ "$service_status" = "running" ] && service_actions+=("stop" "Stop $service_name container") && ((tot_actions+=1))
+  [ "$service_status" = "running" ] && service_actions+=("restart" "Restart $service_name container") && ((tot_actions+=1))
+  [ "$service_status" = "running" ] && service_actions+=("logs" "Show $service_name container logs") && ((tot_actions+=1))
+  service_actions+=("update" "Update $service_name container image") && ((tot_actions+=1))
+  [ "$service_status" = "running" ] && service_actions+=("sh" "Run SH shell in $service_name container") && ((tot_actions+=1))
+  [ "$service_status" = "running" ] && service_actions+=("bash" "Run BASH shell $service_name container") && ((tot_actions+=1))
 
   # Get user selection from menu
-  selected_action=$(dialog --title "Select Action" --menu "What do do on $service_name container:" 15 60 10 "${service_actions[@]}" 3>&1 1>&2 2>&3)
-  echo $selected_action
+  a1=$((tot_actions+7))
+  a2=$((tot_actions+2))
+  selected_action=$(dialog --title "Select Action" --menu "What do do on $service_name container:" $a1 60 $a2 "${service_actions[@]}" 3>&1 1>&2 2>&3)
+  echo "$selected_action"
 
   DC="docker compose -f $folder/docker-compose.yml"
   # Check exit status and selected action
@@ -75,15 +78,16 @@ perform_service_action() {
       $DC down; $DC pull; $DC up -d
     elif [[ "$selected_action" == "sh" ]]; then
       echo "Executing: $DC exec $service_name /bin/sh"
-      $DC exec $service_name /bin/sh
+      $DC exec "$service_name" /bin/sh
     elif [[ "$selected_action" == "bash" ]]; then
       echo "Executing: $DC exec $service_name /bin/bash"
-      $DC exec $service_name /bin/bash
+      $DC exec "$service_name" /bin/bash
     fi
   fi
 }
 
 # Get all docker-compose.yml files in the current directory and one subdirectory
+# shellcheck disable=SC2207
 folders=( $(find . -maxdepth 2 -name 'docker-compose.yml' -print | sed 's/\/docker-compose.yml//' ) )
 
 # Check if any files found
@@ -94,16 +98,20 @@ fi
 
 # Loop through folders and build menu options with stripped folder names
 options=()
+tot_folders=0
 for folder in "${folders[@]}"; do
   # Remove leading ./ from folder name using parameter expansion
+  ((tot_folders+=1))
   folder_name="${folder##*/}"
   service_name=$(get_service_name "$folder")
   service_status=$(get_service_status "$folder" "$service_name")
   options+=( "$folder_name" "(service: $service_status $service_name)" )
 done
 
+f1=$((tot_folders+7))
+f2=$((tot_folders+2))
 # Display menu with folder name (without ./) and service name (without trailing colon)
-choice=$(dialog --title "Select Service to access Actions" --menu "R states container is RUNNING:" 15 60 10 "${options[@]}" 3>&1 1>&2 2>&3)
+choice=$(dialog --title "Select Service to access Actions" --menu "R states container is RUNNING:" $f1 60 $f2 "${options[@]}" 3>&1 1>&2 2>&3)
 
 # Exit status check (user cancellation or error)
 exit_status=$?

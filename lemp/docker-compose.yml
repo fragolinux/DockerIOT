@@ -1,6 +1,14 @@
-version: '3.8'
-
 services:
+  phpmyadmin:
+    image: phpmyadmin:latest
+    ports:
+      - 8080:80
+    environment:
+      PMA_HOST: mariadb
+    depends_on:
+      - mariadb
+    restart: unless-stopped
+
   php:
     build: .
     volumes:
@@ -30,14 +38,4 @@ services:
       - .env
     volumes:
       - ./data/mysql:/var/lib/mysql
-    restart: unless-stopped
-
-  phpmyadmin:
-    image: phpmyadmin:latest
-    ports:
-      - 8080:80
-    environment:
-      PMA_HOST: mariadb
-    depends_on:
-      - mariadb
     restart: unless-stopped
