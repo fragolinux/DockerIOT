@@ -28,8 +28,16 @@ export NCURSES_NO_UTF8_ACS=1
 
 get_service_ports() {
   local folder="$1"
-  ports=$(docker compose -f "$folder"/docker-compose.yml ps --format '{{if ne (index .Publishers 0).PublishedPort 0}}{{.Service}} {{range .Publishers}}{{.PublishedPort}} {{end}}|{{end}}' | awk NF | tr '\n' ' ')
-  [[ "$ports" != "" ]] && echo "[ ${ports::-2} ]" || echo "Not Running"
+  ports=$(docker compose -f "$folder"/docker-compose.yml ps --format '{{if index .Publishers 0}}{{range .Publishers}}{{if ne .PublishedPort 0}}{{$.Service}} {{.PublishedPort}} |{{end}}{{end}}{{end}}' | awk NF | tr '\n' ' ')
+  if [[ "$ports" == "" ]]; then
+    if [[ $(docker compose -f "$folder"/docker-compose.yml ps --format '{{.State}}') == "running" ]]; then
+      echo "Running (no ports exposed)"
+    else
+      echo "Not Running"
+    fi
+  else
+    echo "[ ${ports::-3} ]"
+  fi
 }
 
 get_service_status() {
