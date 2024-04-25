@@ -4,7 +4,7 @@ services:
     volumes:
       - "../dbs:/dbs"
     environment:
-      PHPLITEADMIN_PASSWORD: 't0ps3cr3t'
+      PHPLITEADMIN_PASSWORD: ${PHPLITEADMIN_PASSWORD}
       PHPLITEADMIN_THEME: 'Sheep'
       PHPLITEADMIN_LANGUAGE: 'en'
       PHPLITEADMIN_DIRECTORY: '/dbs'
@@ -14,5 +14,8 @@ services:
       PHPLITEADMIN_MAXSAVEDQUERIES: '20'
       PHPLITEADMIN_COOKIE_NAME: 'pla'
       #PHPLITEADMIN_DEBUG: 'true'
+    env_file:
+      - .env
     ports:
       - "3080:80"
+    restart: unless-stopped
