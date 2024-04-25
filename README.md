@@ -65,4 +65,8 @@ update:
 
 ## custom menu system
 
-the `iotmenu.sh` script (call it using `bash iotmenu.sh` from inside the main DockerIOT folder) allows easy access to all the services, showing which one is running and on which ports, and all the above docker commands without having to remember their syntax
+the `iotmenu.sh` script (call it using `bash iotmenu.sh` from inside the main DockerIOT folder) allows easy access to all the services, showing which one is running and on which ports, and all the above docker commands without having to remember their syntax.
+
+NOTE: this requires a few addon binaries, like `jq` and `dialog`, please install them with something similar to:
+
+    sudo apt install -y jq dialog
