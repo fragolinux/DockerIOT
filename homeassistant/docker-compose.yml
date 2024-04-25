@@ -1,0 +1,18 @@
+services:
+  homeassistant:
+    container_name: homeassistant
+    image: "ghcr.io/home-assistant/home-assistant:stable"
+    volumes:
+      - ./data:/config
+      - /etc/localtime:/etc/localtime:ro
+      - /run/dbus:/run/dbus:ro
+    restart: unless-stopped
+    privileged: true
+    ports:
+      - '8123:8123'
+    # enable following 2 lines in case of error: "<jemalloc>: Unsupported system page size"
+    # environment:
+    #   - DISABLE_JEMALLOC=true
+    # enable following 2 lines to pass zigbee dongles directly to the container, details in README.md
+    # devices:
+    #   - /dev/serial/by-id/DEVICE_ID:/dev/ttyUSB0
