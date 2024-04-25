@@ -6,3 +6,4 @@ services:
     environment:
       - WATCHTOWER_CLEANUP=true
       - TZ=${TZ}
+    restart: unless-stopped
