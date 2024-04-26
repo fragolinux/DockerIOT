@@ -9,7 +9,6 @@ services:
     environment:
       - TZ=${TZ}
     devices:
-      # Make sure this matched your adapter location
-      - /dev/serial/by-id/usb-ITEAD_SONOFF_Zigbee_3.0_USB_Dongle_Plus_V2_20220714082122-if00:/dev/ttyACM0
+      - /dev/serial/by-id/${DEVICE}:/dev/ttyACM0
     ports:
       - "9099:9099"
