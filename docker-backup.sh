@@ -10,10 +10,10 @@ set -o nounset
 set -o pipefail
 IFS=$'\n'
 
-# Fully backup a docker-compose project, including all images, named and unnamed volumes, container filesystems, config, logs, and databases. 
+# Fully backup a docker compose project, including all images, named and unnamed volumes, container filesystems, config, logs, and databases. 
 project_dir="${1:-$PWD}"
 if [ -f "$project_dir/docker-compose.yml" ]; then
-    echo "[i] Found docker-compose config at $project_dir/docker-compose.yml"
+    echo "[i] Found docker compose config at $project_dir/docker-compose.yml"
 else
     echo "[X] Could not find a docker-compose.yml file in $project_dir"
     exit 1
