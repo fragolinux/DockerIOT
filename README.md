@@ -90,8 +90,8 @@ feel free to check `docker --help` and `docker compose --help` to learn a lot mo
     alias drestart="docker compose down; docker compose up -d"
     alias dlogs="docker compose logs -f"
     alias dupdate="docker compose down; docker compose pull; docker compose up -d --force-recreate"
-    alias dsh="docker compose exec \$(grep -A1 services docker compose.yml|tail -1|cut -d: -f1|awk '{\$1=\$1};1') /bin/sh"
-    alias dbash="docker compose exec \$(grep -A1 services docker compose.yml|tail -1|cut -d: -f1|awk '{\$1=\$1};1') /bin/bash"
+    alias dsh="docker compose exec \$(grep -A1 services docker-compose.yml|tail -1|cut -d: -f1|awk '{\$1=\$1};1') /bin/sh"
+    alias dbash="docker compose exec \$(grep -A1 services docker-compose.yml|tail -1|cut -d: -f1|awk '{\$1=\$1};1') /bin/bash"
 
 note: the last 2 commands need a bit of tuning for docker-compose files containing more than a single service, I'll work on them ASAP
 
