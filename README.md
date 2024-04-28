@@ -60,6 +60,11 @@ before going on, you'll need some basic tools, like `jq` and `dialog` (both used
     chmod +x ~/.docker/cli-plugins/docker-compose
     docker compose version
 
+
+## get a copy of this repo
+
+    cd; git clone https://github.com/fragolinux/DockerIOT
+
 ## most common docker compose commands
 
 startup:
