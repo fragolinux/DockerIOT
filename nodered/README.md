@@ -14,7 +14,7 @@ then set this device in `.env` file, uncomment the 4 lines you see in the `docke
 
 ## OPTIONAL: to add EXEC permission on the host... BEWARE, HIGHLY INSECURE if nodered exposed to public and not well protected, the ssh keypair that will be used will allow FULL ROOT ACCESS to the underlying HOST OS!!!
 
-shutdown nodered container, then edit its `docker-compose.yaml`, add this to the `volumes` section (respect indentation, it should be at same level as the other line about "data" folder):
+shutdown nodered container, then edit its `docker-compose.yml`, add this to the `volumes` section (respect indentation, it should be at same level as the other line about "data" folder):
 
     - ./ssh:/usr/src/node-red/.ssh
 
