@@ -3,7 +3,9 @@ services:
     container_name: nodered
     image: nodered/node-red
     volumes:
-    - ./data:/data
+      - ./data:/data
+      # OPTIONAL, enable only if you want root access to the host, via ssh
+      # - ./ssh:/usr/src/node-red/.ssh
     ports:
     - 1880:1880
     restart: unless-stopped
@@ -11,3 +13,8 @@ services:
       - TZ=${TZ}
     env_file:
       - .env
+    # next 4 lines are OPTIONAL, enable only if you need access to host serial port
+    # devices:
+    #   - /dev/serial/by-id/${DEVICE}:/dev/ttyUSB0
+    # group_add:
+    #   - dialout
