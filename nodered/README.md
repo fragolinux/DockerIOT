@@ -4,6 +4,10 @@ set timezone in `.env` file, then change ownership to the data folder:
 
     chown -R 1000:1000 data
 
+## OPTIONAL: access to sqlite db, uncomment the `dbs` line already in the docker compose file, then fix permissions
+
+    chown -R 1000:1000 $HOME/DockerIOT/dbs
+
 ## OPTIONAL: to allow access to host devices, like serial ports, or bluetooth, or whatever
 
 check the device id you want to pass through to the container:

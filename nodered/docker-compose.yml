@@ -8,7 +8,7 @@ services:
       # - ./ssh:/usr/src/node-red/.ssh
       # OPTIONAL, enables access to the sqlite folder, so the
       # default db will be available at /dbs/iot.db in nodered
-      - "../dbs:/dbs"
+      # - "../dbs:/dbs"
     ports:
       - 1880:1880
     restart: unless-stopped
