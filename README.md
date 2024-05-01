@@ -13,6 +13,7 @@ Inspired by the excellent work of Peter Scargill ("[The Script](https://www.esp-
 
 ## What you'll get
 
+- [Dockge](https://github.com/louislam/dockge) | A fancy, easy-to-use and reactive self-hosted docker compose.yaml stack-oriented manager
 - [Grafana](https://grafana.com) | The open platform for analytics and monitoring, already integrated with [InfluxDB](https://www.influxdata.com) | Time Series Database Monitoring & Analytics
 - [Homarr](https://homarr.dev/) | A service dashboard
 - [LEMP] | Linux/Nginx/MariaDB/PhpMyAdmin, full web stack
@@ -59,7 +60,6 @@ before going on, you'll need some basic tools, like `jq` and `dialog` (both used
     curl -SL https://github.com/docker/compose/releases/download/v2.26.1/docker-compose-linux-$(uname -m) -o ~/.docker/cli-plugins/docker-compose
     chmod +x ~/.docker/cli-plugins/docker-compose
     docker compose version
-
 
 ## get a copy of this repo
 
