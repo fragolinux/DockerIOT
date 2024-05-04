@@ -1,0 +1,11 @@
+Host host
+    Hostname DEVICEIP
+    Port SSHPORT
+    IdentityFile ~/.ssh/id_nr
+    User root
+    StrictHostKeyChecking accept-new
+    PreferredAuthentications publickey
+    Compression yes
+    ControlMaster auto
+    ControlPath ~/.ssh/control:%h:%p:%r
+    ControlPersist 10m
