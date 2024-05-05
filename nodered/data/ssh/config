@@ -1,6 +1,6 @@
 Host host
-    Hostname DEVICEIP
-    Port SSHPORT
+    Hostname host
+    Port 22
     IdentityFile ~/.ssh/id_nr
     User root
     StrictHostKeyChecking accept-new

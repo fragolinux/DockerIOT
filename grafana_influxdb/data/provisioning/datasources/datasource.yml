@@ -5,13 +5,13 @@ datasources:
     access: proxy
     user: admin # change in .env file, too
     database: buck # change in .env file, too
-    url: http://influxdb:8086 # change in .env file, too
+    url: http://influxdb:8086 # DO ***NOT*** TOUCH!
     isDefault: true
     editable: false
     jsonData:
       organization: org # change in .env file, too
-      httpMode: POST
       dbName: buck # change in .env file, too
+      httpMode: POST
       httpHeaderName1: "Authorization"
     secureJsonData:
-      httpHeaderValue1: "Token 0f3b0f87-1f88-40f4-b538-47973e860083" # change in .env file, too
+      httpHeaderValue1: "Token 0f3b0f87-1f88-40f4-b538-47973e860083" # DO ***NOT*** TOUCH!

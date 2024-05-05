@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-IP=$(ip route get 1.1.1.1 | grep -oP 'src \K\S+')
+# IP=$(ip route get 1.1.1.1 | grep -oP 'src \K\S+')
 PORT=$(grep "^Port" /etc/ssh/sshd_config|cut -d\  -f 2)
 
-echo "Fixing container ssh config with detected IP: ${IP} and PORT: ${PORT}"
-sed -i -e "s/Hostname.*/Hostname ${IP}/" ssh/config
+#echo "Fixing container ssh config with detected IP: ${IP} and PORT: ${PORT}"
+echo "Fixing container ssh config with detected PORT: ${PORT}"
+# sed -i -e "s/Hostname.*/Hostname ${IP}/" ssh/config
 sed -i -e "s/Port.*/Port ${PORT}/" ssh/config
 
 echo "Generating ssh keys and adding them to host authorized_keys file"

@@ -120,3 +120,11 @@ note: the last 2 commands need a bit of tuning for docker-compose files containi
 ## custom menu system
 
 the `iotmenu.sh` script (call it using `bash iotmenu.sh` from inside the main DockerIOT folder) allows easy access to all the services, showing which one is running and on which ports, and all the above docker commands without having to remember their syntax.
+
+## use consistent naming
+
+you MUST add a line like this to your `/etc/hosts` file pointing your device ip (change the X) with a name `host`
+
+    192.168.1.X host
+
+every service in this repository is already configured to use `host` to access other services, or ad hoc notes are present in each service README file, if needed. So, in nodered, point influxdb on `host`, same for mqtt or whatever other service (ssh exec nodes, too).
