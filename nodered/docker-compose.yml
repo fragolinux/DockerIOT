@@ -9,6 +9,7 @@ services:
       # OPTIONAL, enables access to the sqlite folder, so the
       # default db will be available at /dbs/iot.db in nodered
       - "../dbs:/dbs"
+      - /etc/hosts:/etc/hosts:ro
     ports:
       - 1880:1880
     restart: unless-stopped

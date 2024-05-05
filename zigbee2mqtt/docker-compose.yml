@@ -6,6 +6,7 @@ services:
     volumes:
       - ./data:/app/data
       - /run/udev:/run/udev:ro
+      - /etc/hosts:/etc/hosts:ro
     environment:
       - TZ=${TZ}
     devices:
