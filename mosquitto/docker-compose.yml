@@ -10,3 +10,19 @@ services:
     ports:
       - 1883:1883
       - 9001:9001
+  mqtt-mgmt:
+    image: dotwee/mosquitto-cedalo-management-center-arm64:latest
+    container_name: management-center
+    environment:
+      CEDALO_MC_BROKER_USERNAME: ${CEDALO_MC_BROKER_USERNAME}
+      CEDALO_MC_BROKER_PASSWORD: ${CEDALO_MC_BROKER_PASSWORD}
+      CEDALO_MC_USERNAME: ${CEDALO_MC_USERNAME}
+      CEDALO_MC_PASSWORD: ${CEDALO_MC_PASSWORD}
+      CEDALO_MC_BROKER_ID: mosquitto
+      CEDALO_MC_BROKER_NAME: Mosquitto
+      CEDALO_MC_BROKER_URL: mqtt://mosquitto:1883
+      CEDALO_MC_PROXY_CONFIG_DIR: /management-center/config/config.json
+    ports:
+      - 8088:8088
+    volumes:
+      - ./data/mcconfig:/management-center/backend/config

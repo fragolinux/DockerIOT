@@ -8,3 +8,7 @@ create the hashed passwd file (change username and password in last bits of next
       -v $PWD/data/log:/mosquitto/log \
       eclipse-mosquitto mosquitto_passwd -b \
       -c /mosquitto/config/passwd username password
+
+## management console
+
+put same user and password you used above in the broker section in the `.env` file, and add the desidered web gui (port:8088) credentials there.
