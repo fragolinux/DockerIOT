@@ -1,0 +1,17 @@
+services:
+  stirling-pdf:
+    image: frooodle/s-pdf:latest
+    ports:
+      - '8421:8080'
+    volumes:
+      - ./data/trainingData:/usr/share/tesseract-ocr/4.00/tessdata #Required for extra OCR languages
+      - ./data/extraConfigs:/configs
+      - ./data/customFiles:/customFiles/
+      - ./data/logs:/logs
+    environment:
+      - DOCKER_ENABLE_SECURITY=true
+      - INSTALL_BOOK_AND_ADVANCED_HTML_OPS=false
+      - LANGS=${LANG}
+      - SYSTEM_DEFAULTLOCALE=${LANG}
+      - SECURITY_ENABLELOGIN=true
+      - SECURITY_CSRFDISABLED=true
