@@ -11,7 +11,10 @@ services:
       - 1883:1883
       - 9001:9001
   mqtt-mgmt:
-    image: dotwee/mosquitto-cedalo-management-center-arm64:latest
+    # official updated image, but available only for x86 arch
+    image: cedalo/management-center:dev
+    # unofficial, older version with less features, available for arm arch, too (use this for raspberry)
+    # image: dotwee/mosquitto-cedalo-management-center-arm64:latest
     container_name: management-center
     environment:
       CEDALO_MC_BROKER_USERNAME: ${CEDALO_MC_BROKER_USERNAME}
