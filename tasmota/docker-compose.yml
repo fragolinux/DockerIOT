@@ -1,0 +1,21 @@
+services:
+  tasmoadmin:
+    container_name: TasmoAdmin
+    image: ghcr.io/tasmoadmin/tasmoadmin:latest
+    ports:
+      - 8258:80
+    restart: unless-stopped
+    volumes:
+      - ./data/tasmoadmin:/data/tasmoadmin
+
+  tasmobackup:
+    container_name: TasmoBackup
+    image: 'danmed/tasmobackupv1'
+    ports:
+      - 8259:80
+    restart: unless-stopped
+    volumes:
+      - ./data/tasmobackup:/var/www/html/data
+    environment:
+        - DBTYPE=sqlite
+        - DBNAME=data/tasmobackup
