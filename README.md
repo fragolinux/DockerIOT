@@ -128,3 +128,9 @@ you MUST add a line like this to your `/etc/hosts` file pointing your device ip 
     192.168.1.X host
 
 every service in this repository is already configured to use `host` to access other services, or ad hoc notes are present in each service README file, if needed. So, in nodered, point influxdb on `host`, same for mqtt or whatever other service (ssh exec nodes, too).
+
+## backup
+
+a basic backup script is now added to this repo, it will create a folder for each week day under ./backup and under them 1 folder for each service, containing a tgz file with full datetime as name. If service is running, it will be stopped for consistent backup before, and restarted as soon as backup completed, while stopped services will just be compressed in the tgz without any other intervention.
+
+you can run the backup script as is, with `bash backup.sh`, or pass a folder name, in this case it will backup only that folder: `bash backup.sh nodered`, for example. For easier access, it has been added to the `iotmenu.sh` script, too, as 1st element for each service.

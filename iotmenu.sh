@@ -53,6 +53,7 @@ perform_service_action() {
   # Define service action options as an array
   service_actions=()
   tot_actions=0
+  service_actions+=("backup" "Backup $folder services") && ((tot_actions+=1))
   [ "$service_status" = "" ] && service_actions+=("start" "Start $folder services") && ((tot_actions+=1))
   [ "$service_status" != "" ] && service_actions+=("stop" "Stop $folder services") && ((tot_actions+=1))
   [ "$service_status" != "" ] && service_actions+=("restart" "Restart $folder services") && ((tot_actions+=1))
@@ -78,7 +79,10 @@ perform_service_action() {
   else
     # Simulate command execution (replace with actual execution for production use)
     # You can use libraries like subprocess to execute the command in production
-    if [[ "$selected_action" == "start" ]]; then
+    if  [[ "$selected_action" == "backup" ]]; then
+      echo "Executing: backup.sh $folder"
+      bash backup.sh "$folder"
+    elif [[ "$selected_action" == "start" ]]; then
       echo "Executing: $DC up -d"
       $DC up -d
     elif [[ "$selected_action" == "stop" ]]; then
@@ -93,13 +97,13 @@ perform_service_action() {
     elif [[ "$selected_action" == "update" ]]; then
       echo "Executing: $DC down; $DC pull; $DC up -d"
       $DC down; $DC pull; $DC up -d
-    # for now commented out shell access, it needs to select the specific container in the service
-    # elif [[ "$selected_action" == "sh" ]]; then
-    #   echo "Executing: $DC exec $folder /bin/sh"
-    #   $DC exec "$folder" /bin/sh
-    # elif [[ "$selected_action" == "bash" ]]; then
-    #   echo "Executing: $DC exec $folder /bin/bash"
-    #   $DC exec "$folder" /bin/bash
+    # these 2 could not work if more than 1 container in docker compose, it needs to select the specific container in the service # TODO
+    elif [[ "$selected_action" == "sh" ]]; then
+      echo "Executing: $DC exec $folder /bin/sh"
+      $DC exec "$folder" /bin/sh
+    elif [[ "$selected_action" == "bash" ]]; then
+      echo "Executing: $DC exec $folder /bin/bash"
+      $DC exec "$folder" /bin/bash
     fi
   fi
 }
